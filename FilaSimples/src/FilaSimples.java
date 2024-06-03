@@ -1,6 +1,7 @@
 public class FilaSimples {
     private int tamanho;
     private Integer fila[];
+    private int novoTamanho;
 
     public FilaSimples(int tamanho) {
         this.tamanho = tamanho;
@@ -66,9 +67,11 @@ public class FilaSimples {
                 Integer[] aux = new Integer[tamanho];
                 int j = 0;
                 do {
-                    if (fila[i] != elemento) {
-                        aux[j] = fila[i];
-                        j++;
+                    if (fila[i] != null) {
+                        if (fila[i] != elemento) {
+                            aux[j] = fila[i];
+                            j++;
+                        }
                     }
                     i++;
                 } while (i != tamanho);
@@ -98,8 +101,10 @@ public class FilaSimples {
     public boolean verificarElemento(int elemento) {
         int i = 0;
         do {
-            if (fila[i] == elemento) {
-                return true;
+            if(fila[i] != null) {
+                if (fila[i] == elemento) {
+                    return true;
+                }
             }
             i++;
         } while (i != tamanho);
@@ -111,8 +116,10 @@ public class FilaSimples {
             if (verificarElemento(elemento) == true) {
                 int i = 0;
                 do {
-                    if (fila[i] == elemento) {
-                        System.out.println("O elemento " + elemento + " foi encontrado na fila no indice " + i);
+                    if (fila[i] != null) {
+                        if (fila[i] == elemento) {
+                            System.out.println("O elemento " + elemento + " foi encontrado na fila no indice " + i);
+                        }
                     }
                     i++;
                 } while (i != tamanho);
@@ -162,7 +169,9 @@ public class FilaSimples {
             int i = 0;
             float soma = 0;
             do {
-                soma += fila[i];
+                if (fila[i] != null) {
+                    soma += fila[i];
+                }
                 i++;
             } while (i != tamanho);
             System.out.println("A média dos elementos da fila é " + soma / tamanho);
@@ -177,8 +186,10 @@ public class FilaSimples {
                 int i = 0;
                 int contagem = 0;
                 do {
-                    if (elemento == fila[i]) {
-                        contagem += 1;
+                    if (fila[i] != null) {
+                        if (elemento == fila[i]) {
+                            contagem += 1;
+                        }
                     }
                     i++;
                 } while (i != tamanho);
