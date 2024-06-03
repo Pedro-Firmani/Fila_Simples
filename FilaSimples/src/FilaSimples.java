@@ -1,7 +1,6 @@
 public class FilaSimples {
     private int tamanho;
     private Integer fila[];
-    private int novoTamanho;
 
     public FilaSimples(int tamanho) {
         this.tamanho = tamanho;
