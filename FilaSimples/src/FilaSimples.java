@@ -3,7 +3,6 @@ public class FilaSimples {
     private Integer fila[];
     private int novoTamanho;
 
-
     public FilaSimples(int tamanho) {
         this.tamanho = tamanho;
         this.fila = new Integer[this.tamanho];
@@ -34,7 +33,7 @@ public class FilaSimples {
         return true;
     }
 
-    public void adicionarElemento(Integer elemento) {
+    public void adicionarElemento(int elemento) {
         if (cheio() == false) {
             for (int i = 0; i < tamanho; i++) {
                 if (fila[i] == null) {
@@ -61,7 +60,28 @@ public class FilaSimples {
             System.out.println("A fila não possui elementos");
         }
     }
-
+    public void removerOcorrencias(int elemento) {
+        if (vazio() == false) {
+            if (verificarElemento(elemento) == true) {
+                int i = 0;
+                Integer[] aux = new Integer[tamanho];
+                int j = 0;
+                do {
+                    if (fila[i] != elemento) {
+                        aux[j] = fila[i];
+                        j++;
+                    }
+                    i++;
+                } while (i != tamanho);
+                fila = aux;
+                System.out.println("Todas as ocorrencias do elemento " +elemento+ " foram removidas");
+            } else {
+                System.out.println("A fila não possui o elemento " + elemento);
+            }
+        } else {
+            System.out.println("A fila não possui elementos");
+        }
+    }
     public void removerTodos() {
         if (vazio() == false) {
             int i = 0;
@@ -76,7 +96,7 @@ public class FilaSimples {
         }
     }
 
-    public boolean verificarElemento(Integer elemento) {
+    public boolean verificarElemento(int elemento) {
         int i = 0;
         do {
             if (fila[i] == elemento) {
@@ -87,7 +107,7 @@ public class FilaSimples {
         return false;
     }
 
-    public void buscarElemento(Integer elemento) {
+    public void buscarElemento(int elemento) {
         if (vazio() == false) {
             if (verificarElemento(elemento) == true) {
                 int i = 0;
@@ -152,7 +172,7 @@ public class FilaSimples {
         }
     }
 
-    public void quantidadeElementos(Integer elemento) {
+    public void quantidadeElementos(int elemento) {
         if (vazio() == false) {
             if (verificarElemento(elemento) == true) {
                 int i = 0;
@@ -173,8 +193,8 @@ public class FilaSimples {
     }
 
     public void aumentarCapacidade(int novoTamanho) {
-        Integer aux[] = fila;
         if (novoTamanho > tamanho) {
+            Integer aux[] = fila;
             Integer[] novaFila = new Integer[novoTamanho];
             this.fila = novaFila;
             int i = 0;
@@ -183,7 +203,6 @@ public class FilaSimples {
                 i++;
             } while (i != tamanho);
             this.tamanho = novoTamanho;
-
             System.out.println("A capacidade da fila foi aumentada");
         } else {
             System.out.println("O tamanho inserido é menor que o tamanho da fila original.");
